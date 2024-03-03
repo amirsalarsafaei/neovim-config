@@ -17,10 +17,6 @@ vim.g.mapleader = ','
 -- Neovim shortcuts
 -----------------------------------------------------------
 
-
--- Map Esc to kk
-map('i', 'kk', '<Esc>')
-
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':nohl<CR>')
 
@@ -52,9 +48,8 @@ map('n', '<leader>q', ':qa!<CR>')
 -----------------------------------------------------------
 
 -- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
-map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
-
+map('n', '<leader>tt', ':ToggleTerm<CR>')  -- open
+map('t', '<esc>', [[<C-\><C-n>]])
 -- NvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh

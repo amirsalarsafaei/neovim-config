@@ -151,6 +151,22 @@ lazy.setup({
     {
       "FabijanZulj/blame.nvim"
     },
+
+    -- Debug Adaptor Protocol
+    {
+      "mfussenegger/nvim-dap"
+    },
+
+    -- Lsp Package manager
+    {
+      "williamboman/mason.nvim"
+    },
+
+    -- Terminal
+    {
+      'akinsho/toggleterm.nvim'
+    }
+
   }
 
 })

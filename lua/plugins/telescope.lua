@@ -1,5 +1,7 @@
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+
     -- Default configuration for telescope goes here:
     -- config_key = value,
     mappings = {
@@ -26,5 +28,5 @@ require('telescope').setup{
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  }
+  },
 }

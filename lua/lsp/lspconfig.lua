@@ -118,7 +118,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'lua_ls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -146,15 +146,26 @@ lspconfig.sqls.setup {
   }
 }
 
+lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = root_dir,
 
--- lspconfig.sqls.settings = {
---  sqls = {
---    connections = {
---      {
---        driver = 'postgresql',
---        dataSourceName = 'host=127.0.0.1 port=5432 dbName=open_platform user=manage_admin12 password=complex-password'
---      }
---    }
---  }
---}
-
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
+}

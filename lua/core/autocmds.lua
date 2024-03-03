@@ -53,30 +53,6 @@ autocmd('Filetype', {
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
--- Terminal settings:
----------------------
-
--- Open a Terminal on the right tab
-autocmd('CmdlineEnter', {
-  command = 'command! Term :botright 15split term://$SHELL'
-})
-
--- Enter insert mode when switching to terminal
-autocmd('TermOpen', {
-  command = 'setlocal listchars= nonumber norelativenumber nocursorline',
-})
-
-autocmd('TermOpen', {
-  pattern = '',
-  command = 'startinsert'
-})
-
--- Close terminal buffer on process exit
-autocmd('BufLeave', {
-  pattern = 'term://*',
-  command = 'stopinsert'
-})
-
 -- FormatOnSave
 augroup('FormatOnSave', { clear = true })
 autocmd({'BufWritePre', 'InsertLeave'}, {
@@ -84,6 +60,7 @@ autocmd({'BufWritePre', 'InsertLeave'}, {
   callback = function()
     require('go.format').goimport()
   end,
+  group = 'FormatOnSave'
 })
 
 
